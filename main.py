@@ -8,6 +8,7 @@ import os
 import sys
 import argparse
 from PIL import Image
+import detect
 
 hidemenu =  """
 <style>
@@ -114,4 +115,4 @@ if __name__ == '__main__':
                 for img in os.listdir(get_detection_folder()):
                     st.image(str(Path(f'{get_detection_folder()}') / img))
                     #test
-
+            st.write(detect.label)
