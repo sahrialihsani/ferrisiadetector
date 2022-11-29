@@ -172,7 +172,7 @@ def run(
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)
-                        cv2.putText(im0,' Kesimpulan : ', cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)     
+                        # cv2.putText(im0,' Kesimpulan : ', cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)     
                         
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
