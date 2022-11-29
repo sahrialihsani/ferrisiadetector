@@ -114,5 +114,5 @@ if __name__ == '__main__':
             with st.spinner(text='Loading..'):
                 for img in os.listdir(get_detection_folder()):
                     st.image(str(Path(f'{get_detection_folder()}') / img))
-                    st.write(detect.s)
+                    #st.write(detect.s)
           
