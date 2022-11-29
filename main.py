@@ -49,7 +49,7 @@ def get_detection_folder():
 if __name__ == '__main__':
 
     st.markdown(hidemenu,unsafe_allow_html=True)
-    st.title('Ferrisia Detector')
+    st.title('Ferrisia Detector test')
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
