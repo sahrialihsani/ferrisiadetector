@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
     if input_source == "Image":
         uploaded_file = st.sidebar.file_uploader(
-            "Image", type=['png', 'jpeg', 'jpg'])
+            "Select from Image", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
             is_valid = True
             with st.spinner(text='Loading...'):
