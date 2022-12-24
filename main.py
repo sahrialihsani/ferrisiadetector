@@ -11,9 +11,6 @@ from PIL import Image
 
 hidemenu =  """
 <style>
-#ferrisia detector {
-  text-align: center
-}
 #MainMenu{
     visibility:hidden;
 }
