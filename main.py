@@ -94,7 +94,7 @@ if __name__ == '__main__':
     print(opt)
 
 
-    if input_source == "Local video":
+    if input_source == "Image":
         uploaded_file = st.sidebar.file_uploader(
             "Image", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
