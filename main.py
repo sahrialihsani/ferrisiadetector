@@ -2,7 +2,7 @@ from io import StringIO
 from pathlib import Path
 import streamlit as st
 import time
-# import detect
+import detect_image
 from detect_image import main
 import os
 import sys
