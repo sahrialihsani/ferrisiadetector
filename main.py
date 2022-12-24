@@ -11,6 +11,10 @@ from PIL import Image
 
 hidemenu =  """
 <style>
+body {
+background-image: url("https://i.ibb.co/3TXMDVk/jeremy-bishop-G9i-plbf-Dgk-unsplash.jpg");
+background-size: cover;
+}
 #MainMenu{
     visibility:hidden;
 }
@@ -25,17 +29,6 @@ footer:after{
 }
 </style>
 """
-
-page_bg_img = '''
-<style>
-body {
-background-image: url("https://i.ibb.co/3TXMDVk/jeremy-bishop-G9i-plbf-Dgk-unsplash.jpg");
-background-size: cover;
-}
-</style>
-'''
-
-
 
 def get_subdirs(b='.'):
     '''
@@ -59,7 +52,6 @@ def get_detection_folder():
 if __name__ == '__main__':
 
     st.markdown(hidemenu,unsafe_allow_html=True)    
-    st.markdown(page_bg_img, unsafe_allow_html=True)
 
     input_source = st.sidebar.radio(
      "Select input source",
