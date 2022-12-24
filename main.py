@@ -11,12 +11,8 @@ from PIL import Image
 
 hidemenu =  """
 <style>
-body {
-background-image: url("https://i.ibb.co/3TXMDVk/jeremy-bishop-G9i-plbf-Dgk-unsplash.jpg");
-background-size: cover;
-}
 #MainMenu{
-    visibility:hidden;
+    visibility:visible;
 }
 footer{
     visibility:visible;
