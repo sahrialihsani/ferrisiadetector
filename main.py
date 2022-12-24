@@ -3,12 +3,12 @@ from pathlib import Path
 import streamlit as st
 import time
 # import detect
-from detect import main
+from detect_image import main
 import os
 import sys
 import argparse
 from PIL import Image
-import detect
+from deep_list import *
 
 hidemenu =  """
 <style>
