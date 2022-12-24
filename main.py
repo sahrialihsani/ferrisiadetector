@@ -125,64 +125,64 @@ if __name__ == '__main__':
                         st.image(str(Path(f'{get_detection_folder()}') / img))
                     #st.write(detect.s)
           
-    if input_source == "Webcam":
+    # if input_source == "Webcam":
         
-        if st.sidebar.button("Start tracking"):
+    #     if st.sidebar.button("Start tracking"):
 
-            stframe = st.empty()
+    #         stframe = st.empty()
 
-            st.subheader("Inference Stats")
-            kpi1, kpi2, kpi3 = st.columns(3)
+    #         st.subheader("Inference Stats")
+    #         kpi1, kpi2, kpi3 = st.columns(3)
 
-            st.subheader("System Stats")
-            js1, js2, js3 = st.columns(3)
+    #         st.subheader("System Stats")
+    #         js1, js2, js3 = st.columns(3)
 
-            # Updating Inference results
+    #         # Updating Inference results
             
-            with kpi1:
-                st.markdown("**Frame Rate**")
-                kpi1_text = st.markdown("0")
-                fps_warn = st.empty()
+    #         with kpi1:
+    #             st.markdown("**Frame Rate**")
+    #             kpi1_text = st.markdown("0")
+    #             fps_warn = st.empty()
             
-            with kpi2:
-                st.markdown("**Detected objects in curret Frame**")
-                kpi2_text = st.markdown("0")
+    #         with kpi2:
+    #             st.markdown("**Detected objects in curret Frame**")
+    #             kpi2_text = st.markdown("0")
             
-            with kpi3:
-                st.markdown("**Total Detected objects**")
-                kpi3_text = st.markdown("0")
+    #         with kpi3:
+    #             st.markdown("**Total Detected objects**")
+    #             kpi3_text = st.markdown("0")
             
-            # Updating System stats
+    #         # Updating System stats
             
-            with js1:
-                st.markdown("**Memory usage**")
-                js1_text = st.markdown("0")
+    #         with js1:
+    #             st.markdown("**Memory usage**")
+    #             js1_text = st.markdown("0")
 
-            with js2:
-                st.markdown("**CPU Usage**")
-                js2_text = st.markdown("0")
+    #         with js2:
+    #             st.markdown("**CPU Usage**")
+    #             js2_text = st.markdown("0")
 
-            with js3:
-                st.markdown("**GPU Memory Usage**")
-                js3_text = st.markdown("0")
+    #         with js3:
+    #             st.markdown("**GPU Memory Usage**")
+    #             js3_text = st.markdown("0")
 
-            st.subheader("Inference Overview")
-            inf_ov_1, inf_ov_2, inf_ov_3, inf_ov_4 = st.columns(4)
+    #         st.subheader("Inference Overview")
+    #         inf_ov_1, inf_ov_2, inf_ov_3, inf_ov_4 = st.columns(4)
 
-            with inf_ov_1:
-                st.markdown("**Poor performing classes (Conf < {0})**".format(conf_thres_drift))
-                inf_ov_1_text = st.markdown("0")
+    #         with inf_ov_1:
+    #             st.markdown("**Poor performing classes (Conf < {0})**".format(conf_thres_drift))
+    #             inf_ov_1_text = st.markdown("0")
             
-            with inf_ov_2:
-                st.markdown("**No. of poor peforming frames**")
-                inf_ov_2_text = st.markdown("0")
+    #         with inf_ov_2:
+    #             st.markdown("**No. of poor peforming frames**")
+    #             inf_ov_2_text = st.markdown("0")
             
-            with inf_ov_3:
-                st.markdown("**Minimum FPS**")
-                inf_ov_3_text = st.markdown("0")
+    #         with inf_ov_3:
+    #             st.markdown("**Minimum FPS**")
+    #             inf_ov_3_text = st.markdown("0")
             
-            with inf_ov_4:
-                st.markdown("**Maximum FPS**")
-                inf_ov_4_text = st.markdown("0")
+    #         with inf_ov_4:
+    #             st.markdown("**Maximum FPS**")
+    #             inf_ov_4_text = st.markdown("0")
 
-            detect(source='0', stframe=stframe, kpi1_text=kpi1_text, kpi2_text=kpi2_text, kpi3_text=kpi3_text, js1_text=js1_text, js2_text=js2_text, js3_text=js3_text, conf_thres=float(conf_thres), nosave=nosave, display_labels=display_labels, conf_thres_drift = float(conf_thres_drift), save_poor_frame__= save_poor_frame__, inf_ov_1_text=inf_ov_1_text, inf_ov_2_text=inf_ov_2_text, inf_ov_3_text=inf_ov_3_text, inf_ov_4_text=inf_ov_4_text, fps_warn=fps_warn, fps_drop_warn_thresh = float(fps_drop_warn_thresh))
+    #         detect(source='0', stframe=stframe, kpi1_text=kpi1_text, kpi2_text=kpi2_text, kpi3_text=kpi3_text, js1_text=js1_text, js2_text=js2_text, js3_text=js3_text, conf_thres=float(conf_thres), nosave=nosave, display_labels=display_labels, conf_thres_drift = float(conf_thres_drift), save_poor_frame__= save_poor_frame__, inf_ov_1_text=inf_ov_1_text, inf_ov_2_text=inf_ov_2_text, inf_ov_3_text=inf_ov_3_text, inf_ov_4_text=inf_ov_4_text, fps_warn=fps_warn, fps_drop_warn_thresh = float(fps_drop_warn_thresh))
