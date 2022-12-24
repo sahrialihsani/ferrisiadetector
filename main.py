@@ -94,7 +94,7 @@ if __name__ == '__main__':
     if input_source == "Home":
         st.title('Ferrisia Detector')
         image = Image.open('jeremy-bishop-G9i_plbfDgk-unsplash.jpg')
-        st.image(image, caption='Educative')    
+        st.image(image)    
 
 
     if input_source == "Image":
