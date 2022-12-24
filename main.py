@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     input_source = st.sidebar.radio(
      "Select Page",
-     ('Home Page', 'Detect from Image Page', 'Detect from Webcam Page '))
+     ('Home', 'Image', 'Webcam'))
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
