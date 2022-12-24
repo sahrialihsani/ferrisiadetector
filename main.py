@@ -50,6 +50,10 @@ if __name__ == '__main__':
 
     st.markdown(hidemenu,unsafe_allow_html=True)
     st.title('Ferrisia Detector')
+    
+    input_source = st.sidebar.radio(
+     "Select input source",
+     ('Image', 'Webcam'))
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
@@ -90,28 +94,29 @@ if __name__ == '__main__':
     print(opt)
 
 
-    uploaded_file = st.sidebar.file_uploader(
-        "Image", type=['png', 'jpeg', 'jpg'])
-    if uploaded_file is not None:
-        is_valid = True
-        with st.spinner(text='Loading...'):
-            st.sidebar.image(uploaded_file)
-            picture = Image.open(uploaded_file)
-            picture = picture.save(f'data/images/{uploaded_file.name}')
-            opt.source = f'data/images/{uploaded_file.name}'
-    else:
-        is_valid = False
+    if input_source == "Local video":
+        uploaded_file = st.sidebar.file_uploader(
+            "Image", type=['png', 'jpeg', 'jpg'])
+        if uploaded_file is not None:
+            is_valid = True
+            with st.spinner(text='Loading...'):
+                st.sidebar.image(uploaded_file)
+                picture = Image.open(uploaded_file)
+                picture = picture.save(f'data/images/{uploaded_file.name}')
+                opt.source = f'data/images/{uploaded_file.name}'
+        else:
+            is_valid = False
 
 
-    if is_valid:
-        print('valid')
-        if st.button('Detect'):
+        if is_valid:
+            print('valid')
+            if st.button('Detect'):
 
-            # detect(opt)
-            main(opt)
+                # detect(opt)
+                main(opt)
 
-            with st.spinner(text='Loading..'):
-                for img in os.listdir(get_detection_folder()):
-                    st.image(str(Path(f'{get_detection_folder()}') / img))
+                with st.spinner(text='Loading..'):
+                    for img in os.listdir(get_detection_folder()):
+                        st.image(str(Path(f'{get_detection_folder()}') / img))
                     #st.write(detect.s)
           
