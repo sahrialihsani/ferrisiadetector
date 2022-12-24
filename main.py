@@ -8,7 +8,6 @@ import sys
 import argparse
 from PIL import Image
 import streamlit as st
-from deep_list import *
 import torch
 
 hidemenu =  """
