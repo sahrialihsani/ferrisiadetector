@@ -9,7 +9,6 @@ import sys
 import argparse
 from PIL import Image
 import detect
-from deep_list import *
 
 hidemenu =  """
 <style>
@@ -53,75 +52,11 @@ if __name__ == '__main__':
     st.markdown(hidemenu,unsafe_allow_html=True)
     st.title('Ferrisia Detector')
 
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument('--weights', nargs='+', type=str,
-    #                     default='weights/yolov5s.pt', help='model.pt path(s)')
-    # parser.add_argument('--source', type=str,
-    #                     default='data/images', help='source')
-    # # parser.add_argument('--img-size', type=int, default=640,
-    # #                     help='inference size (pixels)')
-    # parser.add_argument('--conf-thres', type=float,
-    #                     default=0.485, help='object confidence threshold')
-    # parser.add_argument('--iou-thres', type=float,
-    #                     default=0.5, help='IOU threshold for NMS')
-    # parser.add_argument('--device', default='',
-    #                     help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
-    # parser.add_argument('--view-img', action='store_true',
-    #                     help='display results')
-    # parser.add_argument('--save-txt', action='store_true',
-    #                     help='save results to *.txt')
-    # parser.add_argument('--save-conf', action='store_true',
-    #                     help='save confidences in --save-txt labels')
-    # parser.add_argument('--nosave', action='store_true',
-    #                     help='do not save images/videos')
-    # parser.add_argument('--classes', nargs='+', type=int,
-    #                     help='filter by class: --class 0, or --class 0 2 3')
-    # parser.add_argument('--agnostic-nms', action='store_true',
-    #                     help='class-agnostic NMS')
-    # parser.add_argument('--augment', action='store_true',
-    #                     help='augmented inference')
-    # parser.add_argument('--update', action='store_true',
-    #                     help='update all models')
-    # parser.add_argument('--project', default='runs/detect',
-    #                     help='save results to project/name')
-    # parser.add_argument('--name', default='exp',
-    #                     help='save results to project/name')
-    # parser.add_argument('--exist-ok', action='store_true',
-    #                     help='existing project/name ok, do not increment')
-    # opt = parser.parse_args()
-    # print(opt)
-
-
-    # uploaded_file = st.sidebar.file_uploader(
-    #     "Image", type=['png', 'jpeg', 'jpg'])
-    # if uploaded_file is not None:
-    #     is_valid = True
-    #     with st.spinner(text='Loading...'):
-    #         st.sidebar.image(uploaded_file)
-    #         picture = Image.open(uploaded_file)
-    #         picture = picture.save(f'data/images/{uploaded_file.name}')
-    #         opt.source = f'data/images/{uploaded_file.name}'
-    # else:
-    #     is_valid = False
-
-
-    # if is_valid:
-    #     print('valid')
-    #     if st.button('Detect'):
-
-    #         # detect(opt)
-    #         main(opt)
-
-    #         with st.spinner(text='Loading..'):
-    #             for img in os.listdir(get_detection_folder()):
-    #                 st.image(str(Path(f'{get_detection_folder()}') / img))
-    #                 #st.write(detect.s)
-
     st.sidebar.title("Configuration")
 
     input_source = st.sidebar.radio(
      "Select input source",
-     ('RTSP', 'Webcam', 'Local video'))
+     ('RTSP', 'Webcam', 'Local video', 'Local image'))
 
     conf_thres = st.sidebar.text_input("Class confidence threshold", "0.25")
 
@@ -336,3 +271,67 @@ if __name__ == '__main__':
 
             detect(source=rtsp_input, stframe=stframe, kpi1_text=kpi1_text, kpi2_text=kpi2_text, kpi3_text=kpi3_text, js1_text=js1_text, js2_text=js2_text, js3_text=js3_text, conf_thres=float(conf_thres), nosave=nosave, display_labels=display_labels, conf_thres_drift = float(conf_thres_drift), save_poor_frame__= save_poor_frame__, inf_ov_1_text=inf_ov_1_text, inf_ov_2_text=inf_ov_2_text, inf_ov_3_text=inf_ov_3_text, inf_ov_4_text=inf_ov_4_text, fps_warn=fps_warn, fps_drop_warn_thresh = float(fps_drop_warn_thresh))
     
+    if input_source == "Local image":
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--weights', nargs='+', type=str,
+                            default='weights/yolov5s.pt', help='model.pt path(s)')
+        parser.add_argument('--source', type=str,
+                            default='data/images', help='source')
+        # parser.add_argument('--img-size', type=int, default=640,
+        #                     help='inference size (pixels)')
+        parser.add_argument('--conf-thres', type=float,
+                            default=0.485, help='object confidence threshold')
+        parser.add_argument('--iou-thres', type=float,
+                            default=0.5, help='IOU threshold for NMS')
+        parser.add_argument('--device', default='',
+                            help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
+        parser.add_argument('--view-img', action='store_true',
+                            help='display results')
+        parser.add_argument('--save-txt', action='store_true',
+                            help='save results to *.txt')
+        parser.add_argument('--save-conf', action='store_true',
+                            help='save confidences in --save-txt labels')
+        parser.add_argument('--nosave', action='store_true',
+                            help='do not save images/videos')
+        parser.add_argument('--classes', nargs='+', type=int,
+                            help='filter by class: --class 0, or --class 0 2 3')
+        parser.add_argument('--agnostic-nms', action='store_true',
+                            help='class-agnostic NMS')
+        parser.add_argument('--augment', action='store_true',
+                            help='augmented inference')
+        parser.add_argument('--update', action='store_true',
+                            help='update all models')
+        parser.add_argument('--project', default='runs/detect',
+                            help='save results to project/name')
+        parser.add_argument('--name', default='exp',
+                            help='save results to project/name')
+        parser.add_argument('--exist-ok', action='store_true',
+                            help='existing project/name ok, do not increment')
+        opt = parser.parse_args()
+        print(opt)
+
+
+        uploaded_file = st.sidebar.file_uploader(
+            "Image", type=['png', 'jpeg', 'jpg'])
+        if uploaded_file is not None:
+            is_valid = True
+            with st.spinner(text='Loading...'):
+                st.sidebar.image(uploaded_file)
+                picture = Image.open(uploaded_file)
+                picture = picture.save(f'data/images/{uploaded_file.name}')
+                opt.source = f'data/images/{uploaded_file.name}'
+        else:
+            is_valid = False
+
+
+        if is_valid:
+            print('valid')
+            if st.button('Detect'):
+
+                # detect(opt)
+                main(opt)
+
+                with st.spinner(text='Loading..'):
+                    for img in os.listdir(get_detection_folder()):
+                        st.image(str(Path(f'{get_detection_folder()}') / img))
+                        #st.write(detect.s)
