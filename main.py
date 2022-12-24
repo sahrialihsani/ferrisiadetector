@@ -50,8 +50,8 @@ if __name__ == '__main__':
     st.markdown(hidemenu,unsafe_allow_html=True)    
 
     input_source = st.sidebar.radio(
-     "Select input source",
-     ('Home', 'Image', 'Webcam'))
+     "Select Page",
+     ('Home Page', 'Detect from Image Page', 'Detect from Webcam Page '))
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
