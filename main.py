@@ -9,6 +9,7 @@ import sys
 import argparse
 from PIL import Image
 import detect
+from deep_list import *
 
 hidemenu =  """
 <style>
