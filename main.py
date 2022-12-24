@@ -48,12 +48,10 @@ def get_detection_folder():
 
 if __name__ == '__main__':
 
-    st.markdown(hidemenu,unsafe_allow_html=True)
-    st.title('Ferrisia Detector')
-    
+    st.markdown(hidemenu,unsafe_allow_html=True)    
     input_source = st.sidebar.radio(
      "Select input source",
-     ('Image', 'Webcam'))
+     ('Home', 'Image', 'Webcam'))
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', nargs='+', type=str,
@@ -92,6 +90,9 @@ if __name__ == '__main__':
                         help='existing project/name ok, do not increment')
     opt = parser.parse_args()
     print(opt)
+
+    if input_source == "Home":
+        st.title('Ferrisia Detector')
 
 
     if input_source == "Image":
