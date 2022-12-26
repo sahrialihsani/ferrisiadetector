@@ -109,13 +109,12 @@ if __name__ == '__main__':
                 picture = Image.open(uploaded_file)
                 picture = picture.save(f'data/images/{uploaded_file.name}')
                 opt.source = f'data/images/{uploaded_file.name}'
-                st.image(f'data/images/{uploaded_file.name}')
+                
         else:
             is_valid = False
-
-
         if is_valid:
             print('valid')
+            st.image(f'data/images/{uploaded_file.name}')
             if st.button('Detect'):
 
                 # detect(opt)
