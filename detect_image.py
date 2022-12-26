@@ -30,7 +30,6 @@ import platform
 import sys
 import re
 from pathlib import Path
-
 import torch
 import torch.backends.cudnn as cudnn
 
@@ -207,7 +206,6 @@ def run(
 
         # Print time (inference-only)
         LOGGER.info(f'{s}Done. ({t3 - t2:.3f}s)')
-    
 
     # Print results
     t = tuple(x / seen * 1E3 for x in dt)  # speeds per image

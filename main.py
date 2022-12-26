@@ -99,6 +99,7 @@ if __name__ == '__main__':
 
 
     if input_source == "Image":
+        st.title('Detect Image')
         uploaded_file = st.sidebar.file_uploader(
             "Select from Image", type=['png', 'jpeg', 'jpg'])
         if uploaded_file is not None:
