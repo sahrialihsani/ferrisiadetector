@@ -114,7 +114,6 @@ if __name__ == '__main__':
             is_valid = False
         if is_valid:
             print('valid')
-            st.image(f'data/images/{uploaded_file.name}')
             if st.button('Detect'):
 
                 # detect(opt)
