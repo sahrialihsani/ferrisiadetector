@@ -168,7 +168,9 @@ def run(
                     if save_img or save_crop or view_img:  # Add bbox to image
                         c = int(cls)
                         # label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        label = names[c]
+                        if(names[c] == 'rusak'):
+                            names[c] = 'unidentified'
+                            label = names[c]
                         annotator.box_label(xyxy, label, color=colors(c, True))
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
