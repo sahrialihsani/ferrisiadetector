@@ -167,7 +167,7 @@ def run(
 
                     if save_img or save_crop or view_img:  # Add bbox to image
                         c = int(cls)
-                        if(names[c]!= null):                        
+                        if(names[c]):                        
                             names[1]='unidentified'
                             label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                             annotator.box_label(xyxy, label, color=colors(c, True))
