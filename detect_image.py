@@ -167,10 +167,12 @@ def run(
 
                     if save_img or save_crop or view_img:  # Add bbox to image
                         c = int(cls)
-                        # label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        names[1]='unidentified'
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        annotator.box_label(xyxy, label, color=colors(c, True))
+                        if(names[c]!= null):                        
+                            names[1]='unidentified'
+                            label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                            annotator.box_label(xyxy, label, color=colors(c, True))
+                        else:
+                            st.text('Tidak ada kelas yang terdeteksi')
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
