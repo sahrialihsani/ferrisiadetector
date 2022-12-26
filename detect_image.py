@@ -171,7 +171,7 @@ def run(
                         if(names[c] == 'rusak'):
                             names[c] = 'unidentified'
                             label = names[c]
-                        annotator.box_label(xyxy, label, color=colors(c, True))
+                            annotator.box_label(xyxy, label, color=colors(c, True))
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
