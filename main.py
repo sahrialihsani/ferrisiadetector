@@ -106,10 +106,10 @@ if __name__ == '__main__':
             is_valid = True
             with st.spinner(text='Loading...'):
                 st.sidebar.image(uploaded_file)
-                st.image(uploaded_file)
                 picture = Image.open(uploaded_file)
                 picture = picture.save(f'data/images/{uploaded_file.name}')
                 opt.source = f'data/images/{uploaded_file.name}'
+                st.image(f'data/images/{uploaded_file.name}')
         else:
             is_valid = False
 
