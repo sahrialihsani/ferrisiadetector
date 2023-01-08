@@ -166,7 +166,7 @@ def run(
                     LOGGER.info(classDetected)
                     if save_txt: 
                         c = int(cls) 
-                        if(names[c]!=None): # Write to file
+                        if(names[c]!=[]): # Write to file
                             xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                             line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
                             with open(f'{txt_path}.txt', 'a') as f:
@@ -176,7 +176,7 @@ def run(
 
                     if save_img or save_crop or view_img:
                         c = int(cls) 
-                        if(names[c]!=None):  # Add bbox to image                    
+                        if(names[c]!=[]):  # Add bbox to image                    
                             names[1]='unidentified'
                             label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
                             annotator.box_label(xyxy, label, color=colors(c, True))
@@ -186,7 +186,7 @@ def run(
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
                         c = int(cls) 
-                        if(names[c]!=None):
+                        if(names[c]!=[]):
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
                         else:
                             LOGGER.info('Tidak ada yang terdeteksi')
