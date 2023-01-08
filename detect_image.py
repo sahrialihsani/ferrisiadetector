@@ -194,6 +194,8 @@ def run(
             # Stream results
             im0 = annotator.result()
             LOGGER.info(classDetected)
+            if(classDetected==None):
+                st.text('Kosong')
             # if(classDetected==None):
             #     LOGGER.info('No class detected')
             # else:
