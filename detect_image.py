@@ -206,10 +206,7 @@ def run(
                     cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
-            if(classDetected==[]):
-                st.text('No class detected')
-            else:
-                if save_img:
+            if save_img:
                     if dataset.mode == 'image':
                         cv2.imwrite(save_path, im0)
                         
