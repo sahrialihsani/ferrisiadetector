@@ -163,7 +163,6 @@ def run(
                 
                 for *xyxy, conf, cls in reversed(det):
                     c = int(cls) 
-                    classDetected.append(names[c])
                     LOGGER.info(classDetected)
                     if save_txt: 
                         c = int(cls) 
@@ -191,7 +190,7 @@ def run(
                             save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
                         else:
                             LOGGER.info('Tidak ada yang terdeteksi')
-                    
+                    classDetected.append(names[c])
             # Stream results
             im0 = annotator.result()
             if(classDetected==None):
