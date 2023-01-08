@@ -162,6 +162,7 @@ def run(
                 for *xyxy, conf, cls in reversed(det):
                     c = int(cls) 
                     classDetected = names[c]
+                    LOGGER.info(classDetected)
                     if save_txt: 
                         c = int(cls) 
                         if(names[c]!=None): # Write to file
