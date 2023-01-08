@@ -162,23 +162,33 @@ def run(
                 for *xyxy, conf, cls in reversed(det):
                     c = int(cls) 
                     LOGGER.info(names[c])
-                    if save_txt:  # Write to file
-                        xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
-                        line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
-                        with open(f'{txt_path}.txt', 'a') as f:
-                            f.write(('%g ' * len(line)).rstrip() % line + '\n')
+                    if save_txt: 
+                        c = int(cls) 
+                        if(names[c]!=None): # Write to file
+                            xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
+                            line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
+                            with open(f'{txt_path}.txt', 'a') as f:
+                                f.write(('%g ' * len(line)).rstrip() % line + '\n')    
+                        else:
+                            LOGGER.info('Tidak ada yang terdeteksi')
 
-                    if save_img or save_crop or view_img:  # Add bbox to image
-                        c = int(cls)                      
-                        names[1]='unidentified'
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        annotator.box_label(xyxy, label, color=colors(c, True))
+                    if save_img or save_crop or view_img:
+                        c = int(cls) 
+                        if(names[c]!=None):  # Add bbox to image                    
+                            names[1]='unidentified'
+                            label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                            annotator.box_label(xyxy, label, color=colors(c, True))
+                        else:
+                            LOGGER.info('Tidak ada yang terdeteksi')
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
-                        save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                        c = int(cls) 
+                        if(names[c]!=None):
+                            save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                        else:
+                            LOGGER.info('Tidak ada yang terdeteksi')
                     
-
             # Stream results
             im0 = annotator.result()
             if view_img:
