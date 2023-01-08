@@ -167,7 +167,8 @@ def run(
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
                     if save_img or save_crop or view_img:  # Add bbox to image
-                        c = int(cls)   
+                        c = int(cls)
+                        print(names[c])   
                         if(names[c] == None):
                             st.text('Tidak ada kelas terdeteksi')                   
                             # names[1]='unidentified'
