@@ -168,7 +168,7 @@ def run(
 
                     if save_img or save_crop or view_img:  # Add bbox to image
                         c = int(cls)   
-                        if(names[0] == None & names[1] == None & names[2] == None):
+                        if(names[c] == None):
                             st.text('Tidak ada kelas terdeteksi')                   
                             names[1]='unidentified'
                             label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
