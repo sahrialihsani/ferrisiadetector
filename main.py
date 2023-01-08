@@ -1,6 +1,5 @@
 from io import StringIO
 from pathlib import Path
-import streamlit as st
 import time
 from detect_image import main
 import os

@@ -32,6 +32,7 @@ import re
 from pathlib import Path
 import torch
 import torch.backends.cudnn as cudnn
+import streamlit as st
 
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
@@ -159,6 +160,9 @@ def run(
             
                 # Write results
                 for *xyxy, conf, cls in reversed(det):
+                    c = int(cls) 
+                    if(names[0] == '' & names[1] == '' & names[2] == ''):
+                        st.text('Tidak ada kelas terdeteksi')
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
@@ -174,6 +178,7 @@ def run(
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
                         save_one_box(xyxy, imc, file=save_dir / 'crops' / names[c] / f'{p.stem}.jpg', BGR=True)
+                    
 
             # Stream results
             im0 = annotator.result()
@@ -216,8 +221,6 @@ def run(
         LOGGER.info(f"Results saved to {colorstr('bold', save_dir)}{s}")
     if update:
         strip_optimizer(weights[0])  # update model (to fix SourceChangeWarning)
-
-    
 
 
 def parse_opt():
