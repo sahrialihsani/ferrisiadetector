@@ -159,10 +159,7 @@ def run(
 
             
                 # Write results
-                for *xyxy, conf, cls in reversed(det):
-                    c = int(cls) 
-                    if(names[0] == '' & names[1] == '' & names[2] == ''):
-                        st.text('Tidak ada kelas terdeteksi')
+                for *xyxy, conf, cls in reversed(det):                    
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
@@ -170,10 +167,12 @@ def run(
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
                     if save_img or save_crop or view_img:  # Add bbox to image
-                        c = int(cls)                      
-                        names[1]='unidentified'
-                        label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
-                        annotator.box_label(xyxy, label, color=colors(c, True))
+                        c = int(cls)   
+                        if(names[0] == '' & names[1] == '' & names[2] == ''):
+                            st.text('Tidak ada kelas terdeteksi')                   
+                            names[1]='unidentified'
+                            label = None if hide_labels else (names[c] if hide_conf else f'{names[c]} {conf:.2f}')
+                            annotator.box_label(xyxy, label, color=colors(c, True))
                         # tambahan
                         # cv2.putText(im0,' Colony : '+str(konversi),(0,200), cv2.FONT_HERSHEY_SIMPLEX, 5,(255,255,255),24,cv2.LINE_AA)                        
                     if save_crop:
