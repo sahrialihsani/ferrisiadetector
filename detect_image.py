@@ -159,7 +159,11 @@ def run(
 
             
                 # Write results
-                for *xyxy, conf, cls in reversed(det):                    
+                for *xyxy, conf, cls in reversed(det):
+                    c = int(cls) 
+                    if(names[c]==None):
+                        st.text('Tidak ada kelas terdeteksi')
+
                     if save_txt:  # Write to file
                         xywh = (xyxy2xywh(torch.tensor(xyxy).view(1, 4)) / gn).view(-1).tolist()  # normalized xywh
                         line = (cls, *xywh, conf) if save_conf else (cls, *xywh)  # label format
