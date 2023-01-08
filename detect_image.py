@@ -206,7 +206,10 @@ def run(
                     cv2.waitKey(1)  # 1 millisecond
 
             # Save results (image with detections)
-            if save_img:
+            if(classDetected==[]):
+                st.text('Please choose new image')
+            else:
+                if save_img:
                     if dataset.mode == 'image':
                         cv2.imwrite(save_path, im0)
                         
