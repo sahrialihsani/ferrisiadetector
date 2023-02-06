@@ -121,7 +121,7 @@ if __name__ == '__main__':
                 with st.spinner(text='Loading..'):
                     for img in os.listdir(get_detection_folder()):
                         st.image(str(Path(f'{get_detection_folder()}') / img))
-                        uploaded_file.save(f'{uploaded_file.name}')
+                        picture.save(f'{uploaded_file.name}')
                     #st.write(detect.s)
           
     # if input_source == "Webcam":
