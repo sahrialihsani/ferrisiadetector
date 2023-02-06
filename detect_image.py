@@ -211,7 +211,7 @@ def run(
             else:
                 if save_img:
                     if dataset.mode == 'image':
-                        cv2.imwrite('image/', im0)
+                        cv2.imwrite(save_path, im0)
                         
                     else:  # 'video' or 'stream'
                         if vid_path[i] != save_path:  # new video
