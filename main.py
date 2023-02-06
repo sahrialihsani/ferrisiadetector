@@ -106,7 +106,7 @@ if __name__ == '__main__':
             with st.spinner(text='Loading...'):
                 st.sidebar.image(uploaded_file)
                 picture = Image.open(uploaded_file)
-                picture = picture.save(f'data/images/{uploaded_file.name}')
+                picture.save(f'{uploaded_file.name}')
                 opt.source = f'data/images/{uploaded_file.name}'
                 
         else:
@@ -121,7 +121,6 @@ if __name__ == '__main__':
                 with st.spinner(text='Loading..'):
                     for img in os.listdir(get_detection_folder()):
                         st.image(str(Path(f'{get_detection_folder()}') / img))
-                        picture.save(f'{uploaded_file.name}')
                     #st.write(detect.s)
           
     # if input_source == "Webcam":
