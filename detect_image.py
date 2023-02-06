@@ -204,7 +204,7 @@ def run(
                         cv2.resizeWindow(str(p), im0.shape[1], im0.shape[0])
                     cv2.imshow(str(p), im0)
                     cv2.waitKey(1)  # 1 millisecond
-                    cv2.imwrite(save_path, im0)
+                    cv2.imwrite('/app/ferrisiadetector/data/images/', im0)
 
             # Save results (image with detections)
             if(classDetected==[]):
