@@ -160,7 +160,6 @@ def run(
 
             
                 # Write results
-                
                 for *xyxy, conf, cls in reversed(det):
                     c = int(cls) 
                     LOGGER.info(classDetected)
@@ -191,6 +190,7 @@ def run(
                         else:
                             LOGGER.info('Tidak ada yang terdeteksi')
                     classDetected.append(names[c])
+                    
             # Stream results
             im0 = annotator.result()
             LOGGER.info(classDetected)
